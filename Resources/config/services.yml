@@ -7,3 +7,8 @@ services:
         class: Glory\Bundle\AdminBundle\Twig\Extension\VersionExtension
         tags:
             - { name: twig.extension }
+    glory_admin.twig.admin_extension:
+        class: Glory\Bundle\AdminBundle\Twig\Extension\AdminExtension
+        arguments: [@glory_admin.admin]
+        tags:
+            - { name: twig.extension }
