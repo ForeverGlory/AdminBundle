@@ -1,4 +1,8 @@
 services:
+    glory_admin.admin:
+        class: Glory\Bundle\AdminBundle\Model\Admin
+        arguments: [@service_container]
+    
     glory_admin.twig.version_extension:
         class: Glory\Bundle\AdminBundle\Twig\Extension\VersionExtension
         tags:
