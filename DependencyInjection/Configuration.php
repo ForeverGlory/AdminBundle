@@ -32,9 +32,9 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('glory_admin');
-        
+
         $rootNode->children()
-                    ->scalarNode('role')->isRequired()->defaultValue('ROLE_ADMIN')->end()
+                ->scalarNode('role')->isRequired()->defaultValue('ROLE_ADMIN')->end()
                 ->end();
 
         $this->addStylesheetsConfiguration($rootNode);
@@ -42,7 +42,7 @@ class Configuration implements ConfigurationInterface
         $this->addNavigationConfiguration($rootNode);
         $this->addSidebarConfiguration($rootNode);
         $this->addDashboardConfiguration($rootNode);
-        
+
         return $treeBuilder;
     }
 
@@ -51,35 +51,56 @@ class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('stylesheets')
+                ->defaultValue(array(
+                    'assets/libs/bootstrap/3.3.5/css/bootstrap.min.css',
+                    'assets/libs/font-awesome/4.5.0/css/font-awesome.min.css',
+                    'assets/libs/select2/3.4.6/select2.css',
+                    'assets/libs/select2/3.4.6/select2-bootstrap.css',
+                    'assets/libs/adminlte/2.3.1/css/AdminLTE.min.css',
+                    'assets/libs/adminlte/2.3.1/css/skins/_all-skins.min.css',
+                    'assets/css/admin.css'
+                ))
                 ->prototype('scalar')
                 ->end()
             ->end();
     }
-    
+
     protected function addJavascriptsConfiguration(ArrayNodeDefinition $node)
     {
         $node
             ->children()
                 ->arrayNode('javascripts')
+                ->defaultValue(array(
+                    'assets/libs/jquery/2.2.0/jquery.min.js',
+                    'assets/libs/jqueryui/1.11.4/jquery-ui.min.js',
+                    'assets/libs/bootstrap/3.3.5/js/bootstrap.min.js',
+                    'assets/libs/fastclick/fastclick.min.js',
+                    'assets/libs/adminlte/2.3.1/plugins/slimScroll/jquery.slimscroll.min.js',
+                    'assets/libs/select2/3.4.6/select2.min.js',
+                    'assets/libs/adminlte/2.3.1/js/app.js',
+                    'assets/js/admin.js'
+                ))
                 ->prototype('scalar')
                 ->end()
             ->end();
     }
-    
-    protected function addNavigationConfiguration(ArrayNodeDefinition $node){
+
+    protected function addNavigationConfiguration(ArrayNodeDefinition $node)
+    {
         $node
             ->children()
                 ->arrayNode('navigation')
                 ->end()
             ->end();
     }
-    
-    protected function addSidebarConfiguration(ArrayNodeDefinition $node){
+
+    protected function addSidebarConfiguration(ArrayNodeDefinition $node)
+    {
         $node
             ->children()
                 ->arrayNode('sidebar')
-                    ->useAttributeAsKey('name')
-                    ->prototype('array')
+                ->useAttributeAsKey('name')
+                ->prototype('array')
                     ->children()
                         ->scalarNode('title')->end()
                         ->scalarNode('icon')->defaultValue('fa fa-list')->end()
@@ -92,8 +113,9 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end();
     }
-    
-    protected function addDashboardConfiguration(ArrayNodeDefinition $node){
+
+    protected function addDashboardConfiguration(ArrayNodeDefinition $node)
+    {
         $node
             ->children()
                 ->arrayNode('dashboard')
