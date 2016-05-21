@@ -12,3 +12,9 @@ services:
         arguments: [@glory_admin.admin]
         tags:
             - { name: twig.extension }
+    glory_admin.util.logout_url_generator:
+        class: Glory\Bundle\AdminBundle\Util\LogoutUrlGenerator
+        parent: "security.firewall.map"
+        public: true
+        calls:
+            - [setSecurityLogout,[@security.logout_url_generator]]
