@@ -1,3 +1,6 @@
+{% if form is defined %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% endif %}
 {% set title = admin_title() %}
 {% set site = setting('site',{}) %}
 <!DOCTYPE html>
@@ -171,10 +174,20 @@
                         </div>
                         <ul class="sidebar-menu">
                             <li class="header">NAVIGATION</li>
-                            <li class="treeview active">
-                                <a href="#">
+                            <li class="treeview">
+                                <a href="{{path('glory_admin')}}">
                                     <i class="fa fa-dashboard"></i> <span>仪表盘</span> <i class="fa fa-angle-left pull-right"></i>
                                 </a>
+                            </li>
+                            <li class="treeview active">
+                                <a href="#">
+                                    <i class="fa fa-users"></i> <span>用户</span><i class="fa fa-angle-left pull-right"></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="active"><a href="{{path('glory_user_manage')}}"><i class="fa fa-user"></i> 用户管理</a></li>
+                                    <li><a href="{{path('glory_user_group')}}"><i class="fa fa-group"></i> 用户组管理</a></li>
+                                    <li><a href="{{path('glory_user_manage')}}"><i class="fa fa-openid"></i> 第三方认证</a></li>
+                                </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
