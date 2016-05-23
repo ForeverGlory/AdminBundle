@@ -3,13 +3,13 @@
     "type": "symfony-bundle",
     "description": "Symfony AdminBundle",
     "keywords": ["symfony", "bundle", "admin"],
-    "homepage": "http://foreverglory.me",
+    "homepage": "https://foreverglory.me",
     "license": "MIT",
     "authors": [
         {
             "name": "ForeverGlory",
             "email": "foreverglory@qq.com",
-            "homepage": "http://foreverglory.me"
+            "homepage": "https://foreverglory.me"
         }
     ],
     "autoload": {
@@ -23,7 +23,8 @@
         "foreverglory/theme-bundle": "dev-master",
         "foreverglory/setting-bundle": "dev-master",
         "foreverglory/menu-bundle": "dev-master",
-        "foreverglory/web-bundle": "dev-master"
+        "foreverglory/web-bundle": "dev-master",
+        "sp/bower-bundle": "~0.1"
     },
     "require-dev": {
     }
