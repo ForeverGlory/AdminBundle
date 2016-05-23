@@ -11,7 +11,7 @@
 
 namespace Glory\Bundle\AdminBundle\Twig\Extension;
 
-use Glory\Bundle\AdminBundle\Model\Admin;
+use Glory\Bundle\AdminBundle\Variable\Admin;
 
 /**
  * Description of Group
@@ -55,7 +55,7 @@ class AdminExtension extends \Twig_Extension implements \Twig_Extension_GlobalsI
     public function getGlobals()
     {
         return array(
-            'admin' => array()
+            'admin' => $this->admin
         );
     }
 
