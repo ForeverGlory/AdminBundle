@@ -18,3 +18,9 @@ services:
         public: true
         calls:
             - [setSecurityLogout,[@security.logout_url_generator]]
+    
+    glory_admin.menu.default_provider:
+        class: Glory\Bundle\AdminBundle\Menu\Provider\DefaultProvider
+        arguments: [@glory_menu.menu_manager, @router]
+        tags:
+          - { name: knp_menu.provider }
