@@ -1,0 +1,38 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+    <ul class="sidebar-menu">
+        <li class="header">{{item.label}}</li>
+            {% set currentItem = item %}
+            {% for item in currentItem.children %}
+            <li class="treeview{% if matcher.isCurrent(item)%} active{% endif %}">
+                <a href="{{ item.uri }}">
+                    <i class="{{ item.icon }}"></i> 
+                    <span>{{ item.label }}</span> 
+                    <i class="fa{% if item.hasChildren %} fa-angle-left{% endif %} pull-right"></i>
+                </a>
+                {{ block('list') }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block list %}
+    {% if item.hasChildren %}
+        <ul class="treeview-menu">
+            {{ block('children') }}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block children %}
+    {% set currentItem = item %}
+    {% for item in currentItem.children %}
+        <li class="{% if matcher.isCurrent(item)%}active{% endif %}">
+            <a href="{{ item.uri }}">
+                <i class="fa fa-dashboard"></i>
+                {{ item.label }}
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}
