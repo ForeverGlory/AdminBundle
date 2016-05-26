@@ -15,21 +15,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Description of DefaultController
+ * Description of SecurityController
  *
  * @author ForeverGlory <foreverglory@qq.com>
  */
-class DefaultController extends Controller
+class SecurityController extends Controller
 {
 
-    public function indexAction($name)
+    public function logoutAction(Request $request)
     {
-        return $this->render('GloryAdminBundle:Default:index.html.twig', array('name' => $name));
-    }
-
-    public function dashboardAction(Request $request)
-    {
-        return $this->render('GloryAdminBundle:Default:dashboard.html.twig');
+        $util = $this->get('glory_admin.util.logout_url_generator');
+        return $this->redirect($util->getLogoutPath($request));
     }
 
 }

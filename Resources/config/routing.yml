@@ -1,3 +1,11 @@
-glory_admin_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: GloryAdminBundle:Default:index }
+glory_admin:
+    path:     /admin
+    defaults: { _controller: FrameworkBundle:Redirect:redirect }
+
+glory_admin_dashboard:
+    path: /admin/dashboard
+    defaults: { _controller: GloryAdminBundle:Default:dashboard }
+
+glory_admin_logout:
+    path: /admin/logout
+    defaults: { _controller: GloryAdminBundle:Security:logout }
