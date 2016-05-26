@@ -12,7 +12,7 @@
 namespace Glory\Bundle\AdminBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * GloryAdminBundle
@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class GloryAdminBundle extends Bundle
 {
 
-    public function build(ContainerInterface $container)
+    public function build(ContainerBuilder $container)
     {
         parent::build($container);
     }
