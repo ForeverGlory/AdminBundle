@@ -1,6 +1,9 @@
 glory_admin:
     path:     /admin
-    defaults: { _controller: FrameworkBundle:Redirect:redirect }
+    defaults: 
+        _controller: FrameworkBundle:Redirect:redirect 
+        route: glory_admin_dashboard
+        permanent: true
 
 glory_admin_dashboard:
     path: /admin/dashboard
