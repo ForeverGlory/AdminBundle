@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('glory_admin');
 
         $rootNode->children()
-                ->scalarNode('role')->isRequired()->defaultValue('ROLE_ADMIN')->end()
+                ->scalarNode('role')->defaultValue('ROLE_ADMIN')->end()
                 ->end();
 
         $this->addStylesheetsConfiguration($rootNode);
@@ -90,6 +90,7 @@ class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('navigation')
+                ->prototype('scalar')
                 ->end()
             ->end();
     }
@@ -119,6 +120,7 @@ class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('dashboard')
+                ->prototype('scalar')
                 ->end()
             ->end();
     }
