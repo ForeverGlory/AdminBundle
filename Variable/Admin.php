@@ -111,7 +111,7 @@ class Admin
         return $this->navigations;
     }
 
-    protected function inAdmin()
+    public function inAdmin()
     {
         return true;
     }
