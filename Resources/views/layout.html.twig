@@ -12,10 +12,7 @@
         {% endblock %}
         <title>
             {% block title %}
-                {{ 'Admin'|trans }}
-                {% if title is not empty %}
-                    {{ title|raw }}
-                {% endif%}
+                {{ admin.title() }}
             {% endblock %}
         </title>
         {% for stylesheet in admin.stylesheets() %}
@@ -23,16 +20,9 @@
         {% endfor %}
         {% block stylesheets %}
         {% endblock %}
-        {% for javascript in admin.javascripts() %}
-            <script src="{{ asset(javascript) }}"></script>
-        {% endfor %}
-        {% block javascripts %}
-            <script>
-            </script>
-        {% endblock %}
     </head>
     <body {% block body_attributes %}class="hold-transition sidebar-mini skin-blue"{% endblock %}>
-        {% block header %}
+        {% block header %} 
             <header class="main-header">
                 {% block logo %}
                     <a class="logo hidden-xs" href="{{ url('glory_admin') }}">
@@ -42,7 +32,7 @@
                         {% if site.title is defined %}
                             <span> <b> {{ site.title }} </b> </span>
                         {% else %}
-                            <span> <b> GloryAdmin </b> </span>
+                            <span> <b> 管理后台 </b> </span>
                         {% endif %}
                     </a>
                 {% endblock %}
@@ -214,10 +204,15 @@
 
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b> {{ admin_version() }}
+                Version:<b>{{ version('foreverglory/admin-bundle') }}</b>
             </div>
             <strong>Copyright &copy; 2016 <a href="https://foreverglory.me">ForeverGlory</a>.</strong> All rights reserved.
         </footer>
         <div class="control-sidebar-bg"></div>
+        {% for javascript in admin.javascripts() %}
+            <script src="{{ asset(javascript) }}"></script>
+        {% endfor %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>
