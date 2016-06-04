@@ -30,7 +30,7 @@
     {% for item in currentItem.children %}
         <li class="{% if matcher.isCurrent(item)%}active{% endif %}">
             <a href="{{ item.uri }}">
-                <i class="fa fa-dashboard"></i>
+                <i class="{{ item.icon }}"></i>
                 {{ item.label }}
             </a>
         </li>
