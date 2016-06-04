@@ -42,7 +42,7 @@ class Admin
 
     public function getTitle()
     {
-        return 'this is a title name';
+        return 'Admin';
     }
 
     public function hasStylesheet($stylesheet)
@@ -113,7 +113,8 @@ class Admin
 
     public function inAdmin()
     {
-        return true;
+        $request = $this->container->get('request');
+        return preg_match('/^\/admin/', $request->getPathInfo());
     }
 
     public function getMenuRender($name)
