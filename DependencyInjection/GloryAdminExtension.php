@@ -54,6 +54,7 @@ class GloryAdminExtension extends Extension
         foreach ($config['navigation'] as $name => $navigation) {
             $this->addNavigation($container, $name, $navigation);
         }
+        $container->setParameter('glory_admin.dashboard', $config['dashboard']);
     }
 
     public function addStylesheet(ContainerBuilder $container, $stylesheet)

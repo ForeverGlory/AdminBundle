@@ -29,7 +29,8 @@ class DefaultController extends Controller
 
     public function dashboardAction(Request $request)
     {
-        return $this->render('GloryAdminBundle:Default:dashboard.html.twig');
+        $dashboard = $this->getParameter('glory_admin.dashboard');
+        return $this->render('GloryAdminBundle:Default:dashboard.html.twig', ['dashboard' => $dashboard]);
     }
 
 }

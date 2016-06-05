@@ -1,1 +1,10 @@
-{% exextends "GloryAdminBundle::layout.html.twig"%}
+{% extends "GloryAdminBundle::layout.html.twig"%}
+{% block content %}
+    <div class="row">
+        {% for panel in dashboard %}
+            {% if panel.controller is defined %}
+                {{ render(controller(panel.controller)) }}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

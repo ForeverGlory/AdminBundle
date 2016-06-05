@@ -114,7 +114,11 @@ class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('dashboard')
-                ->prototype('scalar')
+                ->prototype('array')
+                    ->children()
+                        ->scalarNode('controller')->end()
+                        ->scalarNode('block')->end()
+                    ->end()
                 ->end()
             ->end();
     }
