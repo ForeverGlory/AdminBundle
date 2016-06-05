@@ -52,12 +52,15 @@ class TwigEngine extends BaseEngine
         $layout = $this->load('GloryAdminBundle::layout.html.twig');
         $template = $this->load($name);
 
-        $blocks = [];
-        foreach (['title', 'stylesheets', 'javascripts', 'content'] as $name) {
-            if (false !== $block = $this->getBlock($template, $name)) {
-                $blocks[$name] = $block;
-            }
-        }
+        $blocks = $this->getBlocks($template, $parameters);
+
+//        $blocks = [];
+//        foreach (['title', 'stylesheets', 'javascripts', 'content'] as $name) {
+//            if (false !== $block = $this->getBlock($template, $name)) {
+//                $blocks[$name] = $block;
+//            }
+//        }
+
         ob_start();
         try {
             $layout->display($parameters, $blocks);
@@ -77,6 +80,15 @@ class TwigEngine extends BaseEngine
             return $this->getBlock($parent, $name);
         }
         return false;
+    }
+
+    protected function getBlocks(\Twig_Template $template, $parameters = [])
+    {
+        $blocks = [];
+        if (false !== $parent = $template->getParent($parameters)) {
+            $blocks = $this->getBlocks($parent);
+        }
+        return array_merge($blocks, $template->getBlocks());
     }
 
     public function exists($name)
