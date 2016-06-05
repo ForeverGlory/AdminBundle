@@ -5,8 +5,12 @@
 {% block content %}
     <div class="row">
         {% for panel in dashboard %}
-            {% if panel.controller is defined %}
+            {% if panel.include is defined %}
+                {% include panel.include %}
+            {% elseif panel.controller is defined %}
                 {{ render(controller(panel.controller)) }}
+            {% elseif panel.block is defined %}
+                {{ render(panel.block) }}
             {% endif %}
         {% endfor %}
     </div>
