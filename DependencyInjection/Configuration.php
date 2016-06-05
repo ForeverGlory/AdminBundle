@@ -52,13 +52,10 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('stylesheets')
                 ->defaultValue(array(
-                    'assets/libs/bootstrap/3.3.5/css/bootstrap.min.css',
-                    'assets/libs/font-awesome/4.5.0/css/font-awesome.min.css',
-                    'assets/libs/select2/3.4.6/select2.css',
-                    'assets/libs/select2/3.4.6/select2-bootstrap.css',
-                    'assets/libs/adminlte/2.3.1/css/AdminLTE.min.css',
-                    'assets/libs/adminlte/2.3.1/css/skins/_all-skins.min.css',
-                    'assets/css/admin.css'
+                    'bundles/gloryadmin/components/bootstrap/dist/css/bootstrap.min.css',
+                    'bundles/gloryadmin/components/fontawesome/css/font-awesome.min.css',
+                    'bundles/gloryadmin/components/adminlte/dist/css/AdminLTE.min.css',
+                    'bundles/gloryadmin/components/adminlte/dist/css/skins/_all-skins.min.css'
                 ))
                 ->prototype('scalar')
                 ->end()
@@ -71,14 +68,11 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('javascripts')
                 ->defaultValue(array(
-                    'assets/libs/jquery/2.2.0/jquery.min.js',
-                    'assets/libs/jqueryui/1.11.4/jquery-ui.min.js',
-                    'assets/libs/bootstrap/3.3.5/js/bootstrap.min.js',
-                    'assets/libs/fastclick/fastclick.min.js',
-                    'assets/libs/adminlte/2.3.1/plugins/slimScroll/jquery.slimscroll.min.js',
-                    'assets/libs/select2/3.4.6/select2.min.js',
-                    'assets/libs/adminlte/2.3.1/js/app.js',
-                    'assets/js/admin.js'
+                    'bundles/gloryadmin/components/jquery/dist/jquery.min.js',
+                    'bundles/gloryadmin/components/bootstrap/dist/js/bootstrap.min.js',
+                    'bundles/gloryadmin/components/adminlte/plugins/fastclick/fastclick.min.js',
+                    'bundles/gloryadmin/components/adminlte/plugins/slimScroll/jquery.slimscroll.min.js',
+                    'bundles/gloryadmin/components/adminlte/dist/js/app.js'
                 ))
                 ->prototype('scalar')
                 ->end()
