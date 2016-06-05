@@ -1,4 +1,7 @@
 {% extends "GloryAdminBundle::layout.html.twig"%}
+{% block title %}
+    Dashboard - {{parent()}}
+{% endblock %}
 {% block content %}
     <div class="row">
         {% for panel in dashboard %}
