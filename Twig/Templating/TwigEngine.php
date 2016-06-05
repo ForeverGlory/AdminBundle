@@ -49,9 +49,13 @@ class TwigEngine extends BaseEngine
         if (!$this->admin->inAdmin()) {
             return $this->engine->render($name, $parameters);
         }
-        $layout = $this->load('GloryAdminBundle::layout.html.twig');
+        $layoutName = 'GloryAdminBundle::layout.html.twig';
         $template = $this->load($name);
+        if (in_array($layoutName, $this->getTemplates($template))) {
+            return $this->engine->render($name, $parameters);
+        }
 
+        $layout = $this->load($layoutName);
         $blocks = $this->getBlocks($template, $parameters);
 
 //        $blocks = [];
@@ -69,6 +73,16 @@ class TwigEngine extends BaseEngine
             throw $e;
         }
         return ob_get_clean();
+    }
+
+    protected function getTemplates(\Twig_Template $template)
+    {
+        $names = [];
+        $names[] = $template->getTemplateName();
+        if (false !== $parent = $template->getParent([])) {
+            $names = array_merge($names, $this->getTemplates($parent));
+        }
+        return $names;
     }
 
     protected function getBlock(\Twig_Template $template, $name)
