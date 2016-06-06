@@ -1,7 +1,6 @@
 {% if form is defined %}
     {% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% endif %}
-{% set title = admin_title() %}
 {% set site = setting('site',{}) %}
 <!DOCTYPE html>
 <html {% block html_attributes %}{% endblock %}>
@@ -208,6 +207,8 @@
             </div>
             <strong>Copyright &copy; 2016 <a href="https://foreverglory.me">ForeverGlory</a>.</strong> All rights reserved.
         </footer>
+        {% block extend %}
+        {% endblock %}
         <div class="control-sidebar-bg"></div>
         {% for javascript in admin.javascripts() %}
             <script src="{{ asset(javascript) }}"></script>
