@@ -21,6 +21,13 @@ use Symfony\Bridge\Twig\DataCollector\TwigDataCollector;
 /**
  * Description of ThemeListener
  *
+ * service.yml
+    glory_admin.event.theme_listener:
+        class: Glory\Bundle\AdminBundle\EventListener\ThemeListener
+        arguments: [@twig, @glory_admin.admin, @data_collector.twig]
+        tags:
+            -  { name: kernel.event_subscriber }
+ * 
  * @author ForeverGlory <foreverglory@qq.com>
  */
 class ThemeListener implements EventSubscriberInterface
