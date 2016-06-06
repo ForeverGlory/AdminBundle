@@ -35,6 +35,8 @@ class PaginationListener implements EventSubscriberInterface
         if ($this->admin->inAdmin()) {
             $pagination = $event->getPaginationView();
             $pagination->setTemplate('GloryAdminBundle:Pagination:pagination.html.twig');
+            $pagination->setSortableTemplate('GloryAdminBundle:Pagination:sortable.html.twig');
+            $pagination->setFiltrationTemplate('GloryAdminBundle:Pagination:filtration.html.twig');
         }
     }
 

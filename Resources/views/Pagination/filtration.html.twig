@@ -1,0 +1,16 @@
+{#{% extends "KnpPaginatorBundle:Pagination:filtration.html.twig" %}#}
+<form method="get" action="{{ action }}" enctype="application/x-www-form-urlencoded">
+    <div class="input-group input-group-sm">
+        <span class="input-group-addon">
+            <select name="{{ filterFieldName }}">
+                {% for field, label in fields %}
+                    <option value="{{ field }}"{% if selectedField == field %} selected="selected"{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </span>
+        <input type="text" value="{{ selectedValue }}" name="{{ filterValueName }}" class="form-control"/>
+        <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+</form>
