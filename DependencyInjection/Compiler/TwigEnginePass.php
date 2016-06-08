@@ -41,6 +41,7 @@ class TwigEnginePass implements CompilerPassInterface
                 ]))
                 ->addMethodCall('setEngine', [new Reference('glory_admin.twig_engine')])
                 ->addMethodCall('setAdmin', [new Reference('glory_admin.admin')])
+                ->addMethodCall('setRequest',[new Reference('request_stack')])
         ;
     }
 

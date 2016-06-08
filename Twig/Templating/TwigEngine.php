@@ -13,6 +13,7 @@ namespace Glory\Bundle\AdminBundle\Twig\Templating;
 
 use Symfony\Bundle\TwigBundle\TwigEngine as BaseEngine;
 use Symfony\Component\Templating\EngineInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Description of TwigEngine
@@ -31,6 +32,11 @@ class TwigEngine extends BaseEngine
     protected $engine;
     protected $admin;
 
+    /**
+     * @var Request
+     */
+    protected $request;
+
     public function setEngine($engine)
     {
         $this->engine = $engine;
@@ -41,11 +47,19 @@ class TwigEngine extends BaseEngine
         $this->admin = $admin;
     }
 
+    public function setRequest(\Symfony\Component\HttpFoundation\RequestStack $request)
+    {
+        $this->request = $request->getCurrentRequest();
+    }
+
     /**
      * {@inheritdoc}
      */
     public function render($name, array $parameters = array())
     {
+        if ($this->request->isXmlHttpRequest()) {
+            return $this->engine->render($name, $parameters);
+        }
         if (!$this->admin->inAdmin()) {
             return $this->engine->render($name, $parameters);
         }
