@@ -31,6 +31,7 @@ class TwigEngine extends BaseEngine
      */
     protected $engine;
     protected $admin;
+    private $isRender = false;
 
     /**
      * @var Request
@@ -60,9 +61,10 @@ class TwigEngine extends BaseEngine
         if ($this->request->isXmlHttpRequest()) {
             return $this->engine->render($name, $parameters);
         }
-        if (!$this->admin->inAdmin()) {
+        if (!$this->admin->inAdmin() || $this->isRender) {
             return $this->engine->render($name, $parameters);
         }
+        $this->isRender = true;
         $layoutName = 'GloryAdminBundle::layout.html.twig';
         $template = $this->load($name);
         if (in_array($layoutName, $this->getTemplates($template))) {
