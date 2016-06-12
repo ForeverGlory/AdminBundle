@@ -28,7 +28,8 @@ class Admin
      * @var MenuExtension 
      */
     protected $menuExtension;
-    protected $inAdmin = false;
+    protected $adminPaths = ['^\/admin'];
+    protected $inAdmin;
     protected $stylesheets;
     protected $javascripts;
     protected $sidebars;
@@ -113,8 +114,18 @@ class Admin
 
     public function inAdmin()
     {
-        $request = $this->container->get('request');
-        return preg_match('/^\/admin/', $request->getPathInfo());
+        if (!isset($this->inAdmin)) {
+            $request = $this->container->get('request');
+            $paths = $this->adminPaths;
+            foreach ($paths as $path) {
+                if (preg_match('/' . $path . '/', $request->getPathInfo())) {
+                    $this->inAdmin = true;
+                    return true;
+                }
+            }
+            $this->inAdmin = false;
+        }
+        return $this->inAdmin;
     }
 
     public function getMenuRender($name)
