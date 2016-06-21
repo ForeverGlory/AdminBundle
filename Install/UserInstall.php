@@ -23,7 +23,11 @@ class UserInstall extends ContainerAwareMission
 
     public function isValid()
     {
-        return array_key_exists('GloryUserBundle', $this->getContainer()->getParameter('kernel.bundles'));
+        if (array_key_exists('GloryUserBundle', $this->getContainer()->getParameter('kernel.bundles'))) {
+            $menu = $this->getExecutor()->getContainer()->get('glory_menu.menu_manager')->findMenu(['name' => 'admin_sidebar_user']);
+            return $menu ? false : true;
+        }
+        return false;
     }
 
     public function execute()
@@ -38,7 +42,8 @@ class UserInstall extends ContainerAwareMission
         $sidebar = $menuManager->findMenu(['name' => 'admin_sidebar']);
 
         $user = $menuManager->createMenu();
-        $user->setName('用户');
+        $user->setName('admin_sidebar_user');
+        $user->setLabel('用户');
         $user->setIcon('fa fa-user');
         $user->setWeight(2);
         $user->setParent($sidebar);
