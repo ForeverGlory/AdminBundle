@@ -9,6 +9,10 @@ glory_admin_dashboard:
     path: /admin/dashboard
     defaults: { _controller: GloryAdminBundle:Default:dashboard }
 
+glory_admin_login:
+    path: /admin/login
+    defaults: { _controller: GloryAdminBundle:Security:login }
+
 glory_admin_logout:
     path: /admin/logout
     defaults: { _controller: GloryAdminBundle:Security:logout }

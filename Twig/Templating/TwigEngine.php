@@ -61,7 +61,7 @@ class TwigEngine extends BaseEngine
         if ($this->request->isXmlHttpRequest()) {
             return $this->engine->render($name, $parameters);
         }
-        if (!$this->admin->inAdmin() || $this->isRender) {
+        if (!$this->admin->inAdmin() || $this->isRender || in_array($name, ['GloryAdminBundle:Security:login.html.twig'])) {
             return $this->engine->render($name, $parameters);
         }
         $this->isRender = true;
