@@ -28,8 +28,8 @@ services:
     glory_admin.menu.default_provider:
         class: Glory\Bundle\AdminBundle\Menu\Provider\DefaultProvider
         arguments: [@glory_menu.menu_manager, @router]
-        tags:
-          - { name: knp_menu.provider }
+#        tags:
+#          - { name: knp_menu.provider }
 
     glory_admin.event.pagination_listener:
         class: Glory\Bundle\AdminBundle\EventListener\PaginationListener
