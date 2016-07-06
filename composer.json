@@ -25,8 +25,19 @@
         "foreverglory/menu-bundle": "dev-master",
         "foreverglory/assets-bundle": "dev-master",
         "foreverglory/web-bundle": "dev-master",
-        "sp/bower-bundle": "~0.1"
+        "php-kit/composer-bower-plugin": "dev-master"
     },
     "require-dev": {
+    },
+    "extra": {
+        "bower": {
+            "require": {
+                "jquery": "~2.0",
+                "jquery.ui": "latest",
+                "bootstrap": "latest",
+                "fontawesome": "latest",
+                "adminlte": "lastest"
+            }
+        }
     }
 }
