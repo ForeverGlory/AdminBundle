@@ -14,9 +14,7 @@
                 {{ admin.title() }}
             {% endblock %}
         </title>
-        {% for stylesheet in admin.stylesheets() %}
-            <link rel="stylesheet" href="{{ asset(stylesheet) }}">
-        {% endfor %}
+        {% include "GloryAdminBundle:assets:css.html.twig" %}
         {% block stylesheets %}
         {% endblock %}
     </head>
@@ -28,7 +26,7 @@
                         {% if site.logo is defined and site.logo is not empty %}
                             <img src="{{ asset(site.logo) }}" alt="{{ site.title }}">
                         {% endif %}
-                        {% if site.title is defined %}
+                        {% if site.title is defined and site.title is not empty %}
                             <span> <b> {{ site.title }} </b> </span>
                         {% else %}
                             <span> <b> 管理后台 </b> </span>
@@ -210,8 +208,9 @@
                                 position: absolute;
                                 right: 0;
                                 top: 0;
-                                width: 100%;"></iframe>
-                        {% endblock %}
+                                width: 100%;">
+                        </iframe>
+                    {% endblock %}
                 </section>
             </div>
         {% endblock %}
@@ -220,14 +219,12 @@
             <div class="pull-right hidden-xs">
                 Version:<b>{{ version('foreverglory/admin-bundle') }}</b>
             </div>
-            <strong>Copyright &copy; 2016 <a href="https://foreverglory.me">ForeverGlory</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2016 <a href="http://foreverglory.me">ForeverGlory</a>.</strong> All rights reserved.
         </footer>
         {% block extend %}
         {% endblock %}
         <div class="control-sidebar-bg"></div>
-        {% for javascript in admin.javascripts() %}
-            <script src="{{ asset(javascript) }}"></script>
-        {% endfor %}
+        {% include "GloryAdminBundle:assets:js.html.twig" %}
         {% block javascripts %}
         {% endblock %}
     </body>
