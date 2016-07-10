@@ -22,11 +22,6 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
 
-    public function indexAction($name)
-    {
-        return $this->render('GloryAdminBundle:Default:index.html.twig', array('name' => $name));
-    }
-
     public function dashboardAction(Request $request)
     {
         $dashboard = $this->getParameter('glory_admin.dashboard');
