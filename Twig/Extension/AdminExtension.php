@@ -28,34 +28,10 @@ class AdminExtension extends \Twig_Extension implements \Twig_Extension_GlobalsI
         $this->admin = $admin;
     }
 
-    public function getFunctions()
-    {
-        return array(
-            new \Twig_SimpleFunction('admin_title', array($this, 'getTitle')),
-            new \Twig_SimpleFunction('admin_stylesheets', array($this, 'getStylesheets')),
-            new \Twig_SimpleFunction('admin_javascripts', array($this, 'getJavascripts')),
-        );
-    }
-
-    public function getTitle()
-    {
-        return '';
-    }
-
-    public function getStylesheets()
-    {
-        return $this->admin->getStylesheets();
-    }
-
-    public function getJavascripts()
-    {
-        return $this->admin->getJavascripts();
-    }
-
     public function getGlobals()
     {
         return array(
-            'admin' => $this->admin
+            'admin' => $this->admin,
         );
     }
 
