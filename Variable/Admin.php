@@ -46,50 +46,6 @@ class Admin
         return 'Admin';
     }
 
-    public function hasStylesheet($stylesheet)
-    {
-        return in_array($stylesheet, $this->stylesheets);
-    }
-
-    public function addStylesheet($stylesheet)
-    {
-        $this->stylesheets[] = $stylesheet;
-        return $this;
-    }
-
-    public function setStylesheets($stylesheets)
-    {
-        $this->stylesheets = $stylesheets;
-        return $this;
-    }
-
-    public function getStylesheets()
-    {
-        return $this->stylesheets;
-    }
-
-    public function hasJavascript($javascript)
-    {
-        return in_array($javascript, $this->javascripts);
-    }
-
-    public function addJavascript($javascript)
-    {
-        $this->javascripts[] = $javascript;
-        return $this;
-    }
-
-    public function setJavascripts($javascripts)
-    {
-        $this->javascripts = $javascripts;
-        return $this;
-    }
-
-    public function getJavascripts()
-    {
-        return $this->javascripts;
-    }
-
     public function setSidebars($sidebars)
     {
         $this->sidebars = $sidebars;

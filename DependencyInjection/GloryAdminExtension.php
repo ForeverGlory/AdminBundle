@@ -41,13 +41,6 @@ class GloryAdminExtension extends Extension
 
         $container->setParameter('glory_admin.role', $config['role']);
 
-        foreach ($config['stylesheets'] as $stylesheet) {
-            $this->addStylesheet($container, $stylesheet);
-        }
-        foreach ($config['javascripts'] as $javascript) {
-            $this->addJavascript($container, $javascript);
-        }
-
         foreach ($config['sidebar'] as $name => $sidebar) {
             $this->addSidebar($container, $name, $sidebar);
         }
@@ -55,18 +48,6 @@ class GloryAdminExtension extends Extension
             $this->addNavigation($container, $name, $navigation);
         }
         $container->setParameter('glory_admin.dashboard', $config['dashboard']);
-    }
-
-    public function addStylesheet(ContainerBuilder $container, $stylesheet)
-    {
-        $container->getDefinition('glory_admin.admin')
-                ->addMethodCall('addStylesheet', array($stylesheet));
-    }
-
-    public function addJavascript(ContainerBuilder $container, $javascript)
-    {
-        $container->getDefinition('glory_admin.admin')
-                ->addMethodCall('addJavascript', array($javascript));
     }
 
     public function addSidebar(ContainerBuilder $container, $name, $sidebar = [])

@@ -34,49 +34,14 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('glory_admin');
 
         $rootNode->children()
-                ->scalarNode('role')->defaultValue('ROLE_ADMIN')->end()
+                    ->scalarNode('role')->defaultValue('ROLE_ADMIN')->end()
                 ->end();
 
-        $this->addStylesheetsConfiguration($rootNode);
-        $this->addJavascriptsConfiguration($rootNode);
         $this->addNavigationConfiguration($rootNode);
         $this->addSidebarConfiguration($rootNode);
         $this->addDashboardConfiguration($rootNode);
 
         return $treeBuilder;
-    }
-
-    protected function addStylesheetsConfiguration(ArrayNodeDefinition $node)
-    {
-        $node
-            ->children()
-                ->arrayNode('stylesheets')
-                ->defaultValue(array(
-                    'bundles/gloryadmin/components/bootstrap/dist/css/bootstrap.min.css',
-                    'bundles/gloryadmin/components/fontawesome/css/font-awesome.min.css',
-                    'bundles/gloryadmin/components/adminlte/dist/css/AdminLTE.min.css',
-                    'bundles/gloryadmin/components/adminlte/dist/css/skins/_all-skins.min.css'
-                ))
-                ->prototype('scalar')
-                ->end()
-            ->end();
-    }
-
-    protected function addJavascriptsConfiguration(ArrayNodeDefinition $node)
-    {
-        $node
-            ->children()
-                ->arrayNode('javascripts')
-                ->defaultValue(array(
-                    'bundles/gloryadmin/components/jquery/dist/jquery.min.js',
-                    'bundles/gloryadmin/components/bootstrap/dist/js/bootstrap.min.js',
-                    'bundles/gloryadmin/components/adminlte/plugins/fastclick/fastclick.min.js',
-                    'bundles/gloryadmin/components/adminlte/plugins/slimScroll/jquery.slimscroll.min.js',
-                    'bundles/gloryadmin/components/adminlte/dist/js/app.js'
-                ))
-                ->prototype('scalar')
-                ->end()
-            ->end();
     }
 
     protected function addNavigationConfiguration(ArrayNodeDefinition $node)
