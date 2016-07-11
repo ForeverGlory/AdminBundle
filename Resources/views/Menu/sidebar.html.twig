@@ -8,8 +8,12 @@
             <li class="treeview{% if matcher.isCurrent(item)%} active{% endif %}">
                 <a href="{{ item.uri }}">
                     <i class="{{ item.icon }}"></i> 
-                    <span>{{ item.label }}</span> 
-                    <i class="fa{% if item.hasChildren %} fa-angle-left{% endif %} pull-right"></i>
+                    <span>{{ item.label }}</span>
+                    {% if item.hasChildren %}
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    {% endif %}
                 </a>
                 {{ block('list') }}
             </li>
