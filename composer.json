@@ -25,7 +25,7 @@
         "foreverglory/menu-bundle": "dev-master",
         "foreverglory/assets-bundle": "dev-master",
         "foreverglory/web-bundle": "dev-master",
-        "php-kit/composer-bower-plugin": "dev-master"
+        "php-kit/composer-bower-plugin": "~1.0"
     },
     "require-dev": {
     },
