@@ -32,10 +32,6 @@
     "extra": {
         "bower": {
             "require": {
-                "jquery": "~2.0",
-                "jquery.ui": "latest",
-                "bootstrap": "latest",
-                "fontawesome": "latest",
                 "adminlte": "~2.3"
             }
         }
